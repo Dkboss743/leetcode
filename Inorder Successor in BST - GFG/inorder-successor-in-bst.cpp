@@ -114,7 +114,7 @@ class Solution{
            if(root==NULL)
            return;
            inorder(root->left,x,val);
-           if(root->data > x->data && val->left==NULL){
+           if(root->data > x->data && val->left == NULL){
            val->left = root;
            return;
            }
