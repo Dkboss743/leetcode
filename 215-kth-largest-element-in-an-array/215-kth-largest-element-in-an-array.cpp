@@ -4,7 +4,8 @@ public:
         priority_queue<int,vector<int>,greater<int>>ans;
         for(int i = 0 ; i<k ; i++)
             ans.push(nums[i]);
-        for(int i = k ; i<nums.size() ; i++){
+        int size = nums.size();
+        for(int i = k ; i<size ; i++){
             if(nums[i]>ans.top()){
                 ans.pop();
                 ans.push(nums[i]);
