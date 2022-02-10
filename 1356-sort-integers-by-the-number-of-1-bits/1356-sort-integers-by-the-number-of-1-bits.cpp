@@ -3,13 +3,17 @@
     int count2= 0;
     int val1 = a;
     int val2 = b;
-    while(a>0){
+    while(true){
+        if(a>0){
         a = (a&(a-1));
         count1++;
-    }
-    while(b>0){
+        }
+        if(b>0){
         b = (b&(b-1));
         count2++;
+        }
+        else
+            break;
     }
     if(count1 == count2)
     return val1<val2;
