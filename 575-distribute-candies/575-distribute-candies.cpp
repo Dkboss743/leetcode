@@ -1,7 +1,6 @@
 class Solution {
 public:
     int distributeCandies(vector<int>& candyType) {
-        sort(candyType.begin(),candyType.end());
         map<int,int> ans;
         for(auto x : candyType)
             ans[x]++;
