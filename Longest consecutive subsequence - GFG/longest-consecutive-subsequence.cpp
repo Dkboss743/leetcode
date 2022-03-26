@@ -23,10 +23,7 @@ class Solution{
                 sum++;
         
             }
-            else if(arr[i] - arr[i-1] == 0){
-                continue;
-            }
-            else{
+            else if(arr[i]-arr[i-1]){
                 sum = 1;
             }
             
