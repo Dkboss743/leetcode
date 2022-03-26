@@ -12,24 +12,18 @@ public:
     int findMaxAverage(int arr[], int n, int k) {
         // code here
         int ans=0;
-        int cnt = 0;
         for(int i=0; i<k ; i++){
             ans+= arr[i];
-            cnt+= arr[i];
         }
-        int j=0;
+        int cnt  = ans;
         int start = 0;
-        // cout << ans << endl;
-        for(int i=1 ; k+i-1<n ; i++){
-            // cout << ans << " " << arr[j] << " " << arr[k+i-1] << endl;
-            int val = cnt-arr[j] + arr[k+i-1];
-            if(val>ans){
-                ans = val;
-                start = i;
+        for(int i=k ; i<n ; i++){
+            cnt+=arr[i];
+            cnt-= arr[i-k];
+            if(cnt > ans){
+                ans = cnt;
+                start = i-k+1;
             }
-            cnt = val;
-           
-            j++;
         }
         return start;
     }
