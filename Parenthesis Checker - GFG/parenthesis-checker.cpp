@@ -13,11 +13,9 @@ class Solution
     bool ispar(string x)
     {
         stack<int> data;
-        bool check = false;
         for(auto y : x){
            if(y == '[' || y== '(' || y== '{'){
            data.push(y);
-           check = true;
            }
            else if(!data.empty()){
                if(y==']' && data.top()=='[')
@@ -32,7 +30,7 @@ class Solution
            else
            return false;
         }
-        return data.empty()&&check;
+        return data.empty();
         // Your code here
     }
 
