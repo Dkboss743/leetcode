@@ -15,20 +15,40 @@ class Solution{
     //Function to rearrange  the array elements alternately.
     void rearrange(long long *arr, int n) 
     { 
-        vector<int> ans;
+        vector<int> ans(n);
         if(n==1)
         return;
         // for(int i=0; i<n ; i++)
         // ans[i] = arr[i];
-        int i=0; 
-        int j = n-1;
-        while(i<=j){
-            ans.push_back(arr[j--]);
-            ans.push_back(arr[i++]);
+        int a,b;
+        if(n&1){
+            a = n/2;
+            b = a+1;
         }
-        for(int i=0; i<n; i++){
-            arr[i] = ans[i];
+        else{
+            a = b = n/2;
         }
+        int i=0;
+        int j=0;
+        while(b){
+           ans[i] = arr[n-j-1];
+           i+=2;
+           j++;
+           b--;
+          
+        }
+        i=1;
+        j=0;
+        while(a){
+            ans[i] = arr[j];
+            i+=2;
+            j++;
+            a--;
+        }
+        for(int i=0 ; i<n ; i++)
+        arr[i] = ans[i];
+        
+        
     	
     	// Your code here
     	 
