@@ -15,39 +15,23 @@ class Solution{
     //Function to rearrange  the array elements alternately.
     void rearrange(long long *arr, int n) 
     { 
-        vector<int> ans(n);
-        if(n==1)
-        return;
-        // for(int i=0; i<n ; i++)
-        // ans[i] = arr[i];
-        int a,b;
-        if(n&1){
-            a = n/2;
-            b = a+1;
+        int max_ele = arr[n-1]+1;
+        int i1 = 0;
+        int j1 = n-1;
+        for(int i=0 ; i< n ; i++)
+        {
+             if(i&1){
+                 arr[i] += (arr[i1]%max_ele) * max_ele;
+                  i1++;
+             }
+             else {
+                 arr[i] += (arr[j1]%max_ele) * max_ele;
+                 j1--;
+             }
         }
-        else{
-            a = b = n/2;
+        for(int i= 0 ; i<n ; i++){
+            arr[i] = arr[i]/max_ele;
         }
-        int i=0;
-        int j=0;
-        while(b){
-           ans[i] = arr[n-j-1];
-           i+=2;
-           j++;
-           b--;
-          
-        }
-        i=1;
-        j=0;
-        while(a){
-            ans[i] = arr[j];
-            i+=2;
-            j++;
-            a--;
-        }
-        for(int i=0 ; i<n ; i++)
-        arr[i] = ans[i];
-        
         
     	
     	// Your code here
