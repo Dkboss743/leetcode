@@ -8,22 +8,32 @@ class Solution{
     public:
     int kthElement(int arr1[], int arr2[], int n, int m, int k)
     {
-        multiset<int> s;
-        for(int i=0 ; i<n ; i++){
-            s.insert(arr1[i]);
+        int i = 0;
+        int j = 0;
+        int ans = -1;
+        if(k > n+m)
+        return -1;
+        while(i<n&&j<m){
+            if(arr1[i]>=arr2[j]){
+                if(k==1)
+                return arr2[j];
+                k--;
+                j++;
+            }
+            else{
+                if(k==1)
+                return arr1[i];
+                k--;
+                i++;
+                
+            }
+            
         }
-        for(int j=0 ; j<m ; j++){
-            s.insert(arr2[j]);
+        if(i == n){
+            return arr2[j+k-1];
         }
-        auto itr = s.begin();
-        // for(auto a : s){
-        //     cout << a << " ";
-        // }
-        // cout << endl;
-        for(int i=0 ; i<k-1 ; i++){
-            itr++;
-        }
-        return *itr;
+        else
+        return arr1[i+k-1];
     }
 };
 
