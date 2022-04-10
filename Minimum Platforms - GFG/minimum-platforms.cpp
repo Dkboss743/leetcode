@@ -14,18 +14,20 @@ class Solution{
     {
         sort(arr,arr+n);
         sort(dep,dep+n);
-        int ans = 1;
-        int train=0;
-        int i=1;
-        int j=0;
-        int m=1;
-        while(i<n && j<n){
-            if(arr[i] <=dep[j])
-            i++,m++;
-            else{
-                m--;j++;
+        int arrival_train = 1;
+        int ans = 0;
+        int departure_train = 0;
+        int platform = 1;
+        while(arrival_train<n && departure_train<n){ 
+            if(arr[arrival_train]<=dep[departure_train]){
+                platform++;
+                arrival_train++;
             }
-            ans = max(m,ans);
+            else{
+                platform--;
+                departure_train++;
+            }
+            ans = max(ans,platform);
         }
         return ans;
     	// Your code here
