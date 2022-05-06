@@ -13,18 +13,9 @@ public:
       for(auto x : nums){
           data[x]++;
       }
-      vector<int> hero;
-      vector<pair<int,int>> ans;
-      for(auto x : data)
-          ans.push_back({x.first,x.second});
-      sort(ans.begin(),ans.end(),Sort);
-        for(auto x : ans)
-        {
-            int a = x.second;
-            while(a--){
-                hero.push_back(x.first);
-            }
-        }
-        return hero;
+      sort(nums.begin(),nums.end() ,[&](int a,int b){
+          return data[a]!=data[b]?data[a]<data[b]:a>b; 
+      });
+        return nums;
     }
 };
