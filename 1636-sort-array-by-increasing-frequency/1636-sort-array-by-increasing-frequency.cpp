@@ -1,12 +1,5 @@
 class Solution {
 public:
-    bool static Sort(pair<int,int> &a, pair<int,int> &b){
-         if(a.second == b.second){
-            return (a.first > b.first);
-          }
-          else
-              return a.second < b.second;
-    }
     vector<int> frequencySort(vector<int>& nums) {
         map<int,int> data;
         int n = nums.size();
