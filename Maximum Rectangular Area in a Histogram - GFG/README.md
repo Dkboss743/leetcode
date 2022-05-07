@@ -1,5 +1,5 @@
 # Maximum Rectangular Area in a Histogram
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Find the largest rectangular area possible in a given histogram where the largest rectangle can be made of a number of contiguous bars. For simplicity, assume that all bars have the same width and the width is<strong> 1 unit</strong>, there will be <strong>N</strong> bars height of each bar will be given by the array <strong>arr</strong>.</span></p>
 
