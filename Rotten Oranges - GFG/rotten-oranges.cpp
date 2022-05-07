@@ -7,9 +7,9 @@ class Solution
 {
     public:
     //Function to find minimum time required to rot all oranges.
-    bool canMove(int i, int j , int n,int m, vector<vector<int>> grid){
-        return (i>=0 && j<m && j>=0 &&  i<n && (grid[i][j]!=0));
-    }
+    // bool canMove(int i, int j , int n,int m, vector<vector<int>> grid){
+    //     return (i>=0 && j<m && j>=0 &&  i<n && (grid[i][j]!=0));
+    // }
     int orangesRotting(vector<vector<int>>& grid) {
         // Code here
         int n = grid.size();
