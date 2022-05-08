@@ -95,23 +95,31 @@ Node* buildTree(string str)
 class Solution
 {
     public:
-    vector<int> ans;
-    int largevalue(Node *root , int level){
+   
+    vector<int> largestValues(Node *root){
         if(root == NULL)
-        return 0;
-        if(level == ans.size())
-        ans.push_back(root->data);
-        else{
-            ans[level] = max(ans[level],root->data);
+        return {};
+        vector<int> ans;
+        queue<Node *>q;
+        int val = INT_MIN;
+        q.push(root);
+        while(!q.empty()){
+            int size = q.size();
+            val = INT_MIN;
+            for(int i =0 ; i<size ; i++){
+                Node *cur = q.front();
+                q.pop();
+                val = max(val,cur->data);
+                if(cur->left!=NULL){
+                    q.push(cur->left);
+                }
+                if(cur->right!=NULL){
+                    q.push(cur->right);
+                }
+            }
+            ans.push_back(val);
         }
-        largevalue(root->left, level+1);
-        largevalue(root->right, level+1);
-    }
-    vector<int> largestValues(Node* root)
-    {
-        largevalue(root,0);
         return ans;
-        //code here
     }
 };
 
