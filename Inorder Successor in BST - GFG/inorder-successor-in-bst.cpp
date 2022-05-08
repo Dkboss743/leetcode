@@ -110,9 +110,7 @@ struct Node {
 class Solution{
   public:
   Node *ans = buildTree("-1");
-   void inSuc(Node *root,Node *x,int &temp,bool &check){
-       if(check)
-       return;
+   void inSuc(Node *root,Node *x,int &temp,bool &check){;
        if(root == NULL){
            return;
        }
@@ -120,12 +118,9 @@ class Solution{
           temp--;
        }
        inSuc(root->left,x,temp,check);
-    //    cout << root->data << endl;
-       if(check)
-       return;
-       if(temp == 0){
+       if(temp == 0 && check){
            ans = root;
-           check = true;
+           check = false;
        }
        if(root == x){
            temp--;
@@ -136,7 +131,7 @@ class Solution{
     Node * inOrderSuccessor(Node *root, Node *x)
     {
         int temp = 2;
-        bool check = false;
+        bool check = true;
         inSuc(root,x,temp,check);
         return ans;
         //Your code here
