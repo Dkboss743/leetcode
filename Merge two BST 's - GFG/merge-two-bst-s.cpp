@@ -114,20 +114,9 @@ class Solution
     {
         vector<int> data;
         inorder(root1,data);
-        vector<int> data2;
-        inorder(root2,data2);
+        inorder(root2,data);
         sort(data.begin(),data.end());
-        sort(data2.begin(),data2.end());
-        // for(auto x : data)
-        // cout << x << " ";
-        // cout << endl;
-        // for(auto x : data2)
-        // cout << x << " ";
-        // cout << endl;
-        int m = data.size()+data2.size();
-        vector<int> ans(m);
-        std::merge(data.begin(),data.end(), data2.begin(), data2.end(), ans.begin());
-        return ans;
+        return data;
        //Your code here
     }
 };
