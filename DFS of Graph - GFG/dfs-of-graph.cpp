@@ -10,9 +10,9 @@ class Solution {
     void dfs(int V,vector<int> adj[],vector<int> &ans){
         visited[V]  = true;
         ans.push_back(V);
-        for(auto i : adj[V]){
-            if(visited[i] == false){
-                dfs(i,adj,ans);
+        for(int j = 0 ; j<adj[V].size() ; j++){
+            if(visited[adj[V][j]] == false){
+                dfs(adj[V][j],adj,ans);
             }
         }
     }
