@@ -109,33 +109,21 @@ struct Node {
 
 class Solution{
   public:
-   vector<Node *> ans;
-   void inSuc(Node *root){
-       if(root == NULL)
-       return;
-       inSuc(root->left);
-       ans.push_back(root);
-       inSuc(root->right);
-     
-   }
     // returns the inorder successor of the Node x in BST (rooted at 'root')
     Node * inOrderSuccessor(Node *root, Node *x)
     {
-        int size = ans.size();
-        inSuc(root);
-        // cout << size << endl;
-        bool tempo = false;
-        for(auto y : ans){
-            if(tempo){
-                return y;
-            }
-            if(x == y){
-                tempo = true;
+        Node* successor = NULL;
+        
+        while(root != NULL)
+        {
+            if(root->data <= x->data)
+              root = root->right;
+            else
+            {  successor = root; //might be a possible answer
+               root = root->left;
             }
         }
-        Node *temp=buildTree("-1"); 
-        return temp;
-        //Your code here
+        return successor;
     }
 };
 
