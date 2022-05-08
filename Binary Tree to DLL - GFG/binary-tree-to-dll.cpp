@@ -114,7 +114,7 @@ class Solution
     {
         if(root == NULL)
         return root;
-        Node *left = bToDLL(root->left);
+         bToDLL(root->left);
         if( prev == NULL){
             head= root;
         }
