@@ -14,20 +14,16 @@ class Solution{
        long long int ans = 0;
        int i = n-1;
        for(i = n-1;i>0; i-=2){
-        //   cout << i << endl;
            sum += arr[i]+arr[i-1];
-        //   cout << sum << endl;
            ans += (sum%10)*temp;
            sum = sum/10;
            temp*=10;
        }
-       if(i==0){
-        //   cout << sum << "  " << temp << endl;
+       if(n%2){
            ans += temp*(sum+arr[0]);
-           return ans;
        }
-       if(sum){
-           ans+= temp*sum;
+       else if(sum){
+             ans+= temp*sum;
        }
        return ans;
         // Your code goes here
