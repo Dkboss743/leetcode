@@ -19,9 +19,6 @@ public:
                 ans+=T[s[i]];
             }
         }
-        for(i; i<s.size(); i++){
-            ans+=T[s[i]];
-        }
         return ans;
      
     }
