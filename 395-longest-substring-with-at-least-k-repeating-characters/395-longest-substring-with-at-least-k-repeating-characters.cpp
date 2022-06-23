@@ -12,22 +12,20 @@ public:
             
     }
     int lgs(string s,int k){
+        if(s.size() == 0){
+            return 0;
+        }
         unordered_map<char,int> data;
         for(auto x : s){
             data[x]++;
         }
-        int val1 = -1;
-        int val2 = -1;
+
         int f = first(s,k,data);
-         // cout << f << endl;
         if(f == -1){
             return s.size();
         }
-       
-        if(f!=0){
-         val1 = lgs(string(s.begin(),s.begin()+f),k);
-        }
-         val2 = lgs(string(s.begin()+f+1,s.end()),k);
+         int val1 = lgs(string(s.begin(),s.begin()+f),k);
+         int val2 = lgs(string(s.begin()+f+1,s.end()),k);
         return max(val1,val2);
     }
     int longestSubstring(string s, int k) {  
