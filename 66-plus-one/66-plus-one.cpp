@@ -13,12 +13,8 @@ public:
             }
         }
         if(carry){
-                    vector<int> ans(n+1);
-            ans[0] = carry;
-            int i=1;
-            for(auto x : digits)
-                ans[i++] = x;
-            return ans;
+          digits.push_back(0);
+          digits[0] = carry;
         }
         return digits;
     }
