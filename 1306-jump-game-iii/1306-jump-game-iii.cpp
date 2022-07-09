@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int canR(vector<int> &arr , int start , vector<vector<int>>&dp){
+    int canR(vector<int> &arr , int start ,int dp[][2]){
         if(start < 0 || start >=arr.size()){
             return -1;
         }
@@ -17,7 +17,8 @@ public:
         return dp[start][0] = canR(arr , start + arr[start], dp);
     }
     bool canReach(vector<int>& arr, int start) {
-        vector<vector<int>> dp(arr.size(),vector<int>(2,-1));
+        int n = arr.size();
+        int dp[50001][2] = {0};
         int val = canR(arr,start,dp);
         return (val == 1);
        
