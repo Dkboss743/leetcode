@@ -6,26 +6,26 @@ public:
         if(ans < 0){
             ans = 0;
         }
-        for(int k=0; k<ener.size(); k++)
-        {
-            // if(i<=ener[k])
-            // {
-            //     diff = (ener[k]-i+1);
-            //     i += diff;
-            //     cnt += diff;
-            // }
-            if(e<=exp[k])
-            {
-                diff = (exp[k]-e+1);
-                cout << diff << endl;
-                e += diff;
-                cnt += diff;
-            }
-            
-            // i -= ener[k];
-            e += exp[k];
+//         for(int k=0; k<ener.size(); k++)
+//         {
+//             if(e<=exp[k])
+//             {
+//                 diff = (exp[k]-e+1);
+//                 cout << diff << endl;
+//                 e += diff;
+//                 cnt += diff;
+//             }
+//             e += exp[k];
                 
-        }
+//         }
+         for(auto x : exp){
+            if(e <= x){
+                cnt+= x-e+1;
+                e += x-e+1;
+                
+            }
+                e+=x;
+            }
         return cnt+ans;
     }
    
@@ -34,14 +34,7 @@ public:
         // }
         // int temp = 0;
         // int sum = initialExperience;
-        // for(auto x : experience){
-        //     if(sum <= x){
-        //         temp+= x-sum+1;
-        //     }
-        //     else{
-        //         sum+=x;
-        //     }
-        // }
+       
         // return ener+temp;
 };
 
