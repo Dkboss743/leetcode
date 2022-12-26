@@ -12,18 +12,18 @@ public:
                 en--;
             }
             else{
-                int i = en;
-                while(i>st && s[i] != s[st]){
-                    i--;
+                int i = st;
+                while(i<en && s[i] != s[en]){
+                    i++;
                 }
-                if(i == st){
-                    swap(s[st] , s[st+1]);
+                if(i ==en){
+                    swap(s[en] , s[en-1]);
                     ans++;
                 }
                 else{
-                    while(i<en){
-                        swap(s[i] , s[i+1]);
-                        i++;
+                    while(i>st){
+                        swap(s[i] , s[i-1]);
+                        i--;
                         ans++;
                     }
                     st++;
