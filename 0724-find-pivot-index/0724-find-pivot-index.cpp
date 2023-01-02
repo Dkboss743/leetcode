@@ -7,18 +7,13 @@ public:
         for(int i = 1; i<n; i++){
             ans[i] = ans[i-1] + nums[i];
         }
-        vector<int> temp(n,0);
-        temp[n-1] = nums[n-1];
-        for(int i = n-2; i>=0; i--){
-            temp[i] = temp[i+1] + nums[i];
-        }
-        int  pivot_index = -1;
-        for(int i = 0; i<n; i++){
-            if(ans[i]-nums[i]  == temp[i]-nums[i]){
-                pivot_index = i;
-                break;
-            }
-            
+        int pivot_index = -1;
+        int val = 0;
+        for(int i = n-1; i>=0; i--){
+           if(ans[i]-nums[i] == val){
+               pivot_index = i;
+           }
+           val+=nums[i];
         }
         return pivot_index;
         
