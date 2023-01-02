@@ -7,7 +7,7 @@ public:
         int ind = -1;
         int prev = 0;
         for(int i = 0; i<n; i++){
-            if((sum - prev - nums[i]) == prev){
+            if((sum - nums[i]) == (2*prev)){
                 ind = i;
                 break;
             }
