@@ -1,3 +1,4 @@
+// custom hash function
 struct hash_pair {
     template <class T1, class T2>
     size_t operator()(const pair<T1, T2>& p) const
@@ -8,8 +9,6 @@ struct hash_pair {
         if (hash1 != hash2) {
             return hash1 ^ hash2;             
         }
-         
-        // If hash1 == hash2, their XOR is zero.
           return hash1;
     }
 };
@@ -20,27 +19,19 @@ public:
         int n = points.size();
         int ans = 1;
         for(int i = 0; i<n ; i++){  
+            // here is used pair<int,int> as double can be unpredictable cause we want to make sure that key matches
+            //exactly so we can use pair as <numerator , denominator> for that
             unordered_map<pair<int, int>, int, hash_pair> mp;
-            int x = points[i][0];
-            int y = points[i][1];
             for(int j=0; j<n; j++){
                 if(i == j){
                     continue;
                 }
-                int new_x = x - points[j][0];
-                int new_y = y - points[j][1];
-                if(new_x < 0 && new_y < 0){
-                    new_x = -new_x;
-                    new_y = -new_y;
-                }
-                else if(new_y < 0){
-                    new_x = -new_x;
-                    new_y = -new_y;
-                }
-                int denom = __gcd(abs(new_x) , abs(new_y));
-                new_x /= denom;
-                new_y /= denom;
-                pair<int,int> temp(new_x , new_y);
+                int num = points[i][0] - points[j][0];
+                int denom = points[i][1] - points[j][1];
+                int val = __gcd(num ,denom);
+                num /= val;
+                denom /= val;
+                pair<int,int> temp(num , denom);
                 mp[temp]++; 
             }
             for(auto x : mp){
