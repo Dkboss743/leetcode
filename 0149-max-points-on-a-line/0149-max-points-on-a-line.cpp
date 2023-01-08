@@ -14,7 +14,7 @@ struct hash_pair {
 };
 class Solution {
 public:
-    
+    // finding slope of every point with every other point and then taking maximum points having same slope
     int maxPoints(vector<vector<int>>& points) {
         int n = points.size();
         int ans = 1;
@@ -26,13 +26,13 @@ public:
                 if(i == j){
                     continue;
                 }
+                // saving slope as {num , denom}
                 int num = points[i][0] - points[j][0];
                 int denom = points[i][1] - points[j][1];
-                int val = __gcd(num ,denom);
-                num /= val;
-                denom /= val;
-                pair<int,int> temp(num , denom);
-                mp[temp]++; 
+                int gcd = __gcd(num ,denom); // to convert into their base form {2, 4} -> {1, 2}
+                num /= gcd;
+                denom /= gcd;
+                mp[{num,denom}]++; 
             }
             for(auto x : mp){
                 ans = max(ans , 1+x.second);
