@@ -7,7 +7,10 @@ public:
                 ans += dfs(to, hasApple , ind);
             }
         }
-        return (!ind) ? ans : (hasApple[ind] || ans) ? ans + 2 : 0;
+        if(ind == 0){
+            return ans;
+        }
+        return (hasApple[ind] || ans) ? ans + 2 : 0;
     }
     int minTime(int n, vector<vector<int>>& edges, vector<bool>& hasApple) {
         tree.resize(n);
