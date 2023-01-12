@@ -7,11 +7,7 @@ public:
             if(to == par){
                 continue;
             }
-            unordered_map<char, int> temp;
-            dfs(tr , ind , to , l , temp);
-            for(auto x : temp){
-                mp[x.first] += x.second;
-            }
+            dfs(tr , ind , to , l , mp);
         }
         ans[ind] = ++mp[l[ind]] - prev;
     }
