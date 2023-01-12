@@ -4,10 +4,9 @@ public:
     void dfs(vector<vector<int>> &tr ,int par ,int ind,string &l, unordered_map<char,int> &mp){
         int prev = mp[l[ind]];
         for(auto to : tr[ind]){
-            if(to == par){
-                continue;
+            if(to != par){
+              dfs(tr , ind , to , l , mp); 
             }
-            dfs(tr , ind , to , l , mp);
         }
         ans[ind] = ++mp[l[ind]] - prev;
     }
