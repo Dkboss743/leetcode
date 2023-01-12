@@ -1,19 +1,23 @@
 class Solution {
 public:
     set<vector<int>> ans;
-    void util(vector<int> &nums , int i){
-        if(i == nums.size()-1){
-            ans.insert(nums);
-            return;
+    set<int> ind;
+    void util(vector<int> &nums , vector<int> temp){
+        if(temp.size() == nums.size()){
+            ans.insert(temp);
         }
-        for(int k = i; k<nums.size(); k++){
-            swap(nums[i] , nums[k]);
-            util(nums , i+1);
-            swap(nums[i] , nums[k]);
+        for(int i=0; i<nums.size() ; i++){
+            if(ind.find(i) == ind.end()){
+            temp.push_back(nums[i]);
+            ind.insert(i);
+            util(nums , temp);
+            ind.erase(i);
+            temp.pop_back();
+            }
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
-        util(nums, 0);
+        util(nums, {});
         vector<vector<int>>val;
         for(auto x : ans){
             val.push_back(x);
