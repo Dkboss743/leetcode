@@ -7,17 +7,16 @@ public:
         for(int i = 0;i <gr[idx].size() ; i++){
             if(gr[idx][i] != par){
                 int temp = dfs(s, gr[idx][i] , idx);
-                if(temp != -1){
+                if(s[gr[idx][i]] == s[idx]){
+                    temp = 0;
+                }
                     ans = max(ans , curr + temp + 1);
                     curr = max(curr , temp);
                 }
             }
-        }
-        if(par != -1 && s[idx] != s[par]){
-            return curr+1;
-        }
-        return -1;
+        return curr+1;
     }
+        
     int longestPath(vector<int>& parent, string s) {
         ans = 1;
         gr.resize(s.size());
