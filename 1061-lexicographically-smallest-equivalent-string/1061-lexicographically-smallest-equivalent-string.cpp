@@ -1,42 +1,30 @@
 class Solution {
 public:
-    void util(unordered_map<char, set<char>> &mp , char s , char p, set<char> &st){
-        if(mp.find(s)!= mp.end()){
-            set<char>temp = mp[s];
-            st.insert(temp.begin(),temp.end());
+    vector<int> par;
+    int find(int x){
+        if(par[x] == -1){
+            return x;
         }
-        if(mp.find(p)!=mp.end()){
-            set<char>temp = mp[p];
-            st.insert(temp.begin(), temp.end());
+        return par[x] = find(par[x]);
+    }
+    void Union(int x , int y){
+        x = find(x);
+        y = find(y);
+        if(x != y){
+            par[max(x,y)] = min(x,y);
         }
     }
     string smallestEquivalentString(string s1, string s2, string baseStr) {
-        unordered_map<char , set<char>> mp;
-        int n = s1.size();
-        for(int i=0; i<n; i++){
-            set<char> temp;
-            temp.insert(s1[i]);
-            temp.insert(s2[i]);
-            util(mp , s1[i] , s2[i], temp);
-            mp[s1[i]] = temp;
-            mp[s2[i]] = temp;
-        }
-        string ans = "";
-        for(auto &x : mp){
-          set<char> temp = x.second;
-          for(auto y : temp){
-              temp.insert(mp[y].begin(),mp[y].end());
+          int n = s1.size();
+          par = vector<int> (26 , -1);
+          for(int i = 0; i<s1.size() ; i++){
+              Union(s1[i]-'a' , s2[i]-'a');
           }
-          x.second = temp;
-        }
+        string ans = "";
         for(auto x : baseStr){
-            if(mp.find(x) == mp.end()){
-                ans += x;
-            }
-            else{
-            ans += *(mp[x].begin());
-            }
+            ans += 'a' + find(x-'a');
         }
         return ans;
+          
     }
 };
