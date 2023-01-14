@@ -1,14 +1,10 @@
 class Solution {
 public:
     bool check(string s){
-        unordered_set<char> st;
-        for(auto x : s){
-            if(st.find(x) != st.end()){
-                return false;
-            }
-            st.insert(x);
+        if(s[0] != s[1] && s[0] !=s[2] && s[1]!=s[2]){
+            return true;
         }
-        return true;
+        return false;
     }
     int countGoodSubstrings(string s) {
         int n = s.size();
