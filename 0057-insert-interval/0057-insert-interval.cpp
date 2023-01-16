@@ -8,14 +8,13 @@ public:
             ans.push_back(newInterval);
             return ans;
         }
-        bool check = false;
+       
         for(int i = 0; i<n; i++){
-
-            if(check || intervals[i][1] < newInterval[0]){
+            if(intervals[i][1] < newInterval[0]){
                 ans.push_back(intervals[i]);
             }
             else{
-                check = true;
+                
                 int j = i;
                 newInterval[0] = min(newInterval[0] , intervals[i][0]);
                 int val = 0;
