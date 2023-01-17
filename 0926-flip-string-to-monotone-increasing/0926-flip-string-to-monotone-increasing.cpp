@@ -11,8 +11,8 @@ public:
         for(int i = n-2; i>=0; i--){
             zeros += (int)(s[i+1] == '0');
             ans = min(ans , zeros + ones[i]);
-            ans = min(ans , (n-1-i-zeros) + ones[i] + (int)(s[i] == '1'));
         }
+        ans = min(ans , ones[n-1] + (int)(s[n-1] == '1'));
         return ans;
     }
 };
