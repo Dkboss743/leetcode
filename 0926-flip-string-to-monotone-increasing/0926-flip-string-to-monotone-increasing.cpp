@@ -4,7 +4,12 @@ public:
        int n = s.size();
        vector<int> ones(n , 0);
         for(int i = 1;i < n ; i++){
-            ones[i] = ones[i-1] + (int)(s[i-1]=='1');
+            if(s[i-1] == '1'){
+             ones[i] = ones[i-1] + 1;   
+            }
+            else{
+                ones[i] = ones[i-1];
+            }
         }
         int zeros = 0;
         int ans = INT_MAX;
