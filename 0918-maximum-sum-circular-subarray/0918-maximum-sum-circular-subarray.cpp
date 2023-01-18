@@ -11,12 +11,10 @@ public:
             mx_sum += nums[i];
             mx = max(mx , mx_sum);
             mn = min(mn , mn_sum);
-            if(mx_sum < 0){
+            if(mx_sum < 0)
                 mx_sum = 0;
-            }
-            if(mn_sum > 0){
+            if(mn_sum > 0)
                 mn_sum = 0;
-            }
         }
         if(tot - mn == 0){
             return mx;
