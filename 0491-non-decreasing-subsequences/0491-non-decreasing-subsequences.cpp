@@ -5,10 +5,10 @@ public:
         if(temp.size() > 1){
             ans.insert(temp);
         }
-        for(int k = i; k<nums.size() ; k++){
-            if(temp.size() == 0 || nums[k] >= temp[temp.size() - 1]){
-                temp.push_back(nums[k]);
-                util(nums , k+1, temp);
+        for(i; i<nums.size() ; i++){
+            if(temp.size() == 0 || nums[i] >= temp[temp.size() - 1]){
+                temp.push_back(nums[i]);
+                util(nums , i+1, temp);
                 temp.pop_back();
             }
         }
