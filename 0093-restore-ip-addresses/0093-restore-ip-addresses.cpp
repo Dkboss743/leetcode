@@ -18,12 +18,9 @@ public:
                 break;
             }
             sz = temp.size() + 1;
-            cur += temp;
-            cur += ".";
-            // cout << "now  :"<<  cur << endl;
+            cur += temp + ".";
             util(s , j+1 , cur , dot + 1);
             cur.erase(cur.size() - sz, sz);
-            // cout << "back :" <<  cur << endl;
         }
     }
     vector<string> restoreIpAddresses(string s) {
