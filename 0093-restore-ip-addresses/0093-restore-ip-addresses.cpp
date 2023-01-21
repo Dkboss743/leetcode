@@ -14,13 +14,13 @@ public:
             }
             int sz = 0;
             temp += s[j];
-            if(stoi(temp)>255 || stoi(temp) < 0 || (temp[0] == '0' && temp.size() > 1)){
+            int val = stoi(temp);
+            if(val>255 || val < 0 || (temp[0] == '0' && temp.size() > 1)){
                 break;
             }
-            sz = temp.size() + 1;
             cur += temp + ".";
             util(s , j+1 , cur  , dot + 1);
-            cur.erase(cur.size() - sz, sz);
+            cur.erase(cur.size() - temp.size() - 1, temp.size()  + 1);
         }
     }
     vector<string> restoreIpAddresses(string s) {
