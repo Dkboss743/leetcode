@@ -18,9 +18,7 @@ public:
                 break;
             }
             sz = temp.size() + 1;
-            cur += temp + ".";
-            util(s , j+1 , cur , dot + 1);
-            cur.erase(cur.size() - sz, sz);
+            util(s , j+1 , cur + temp + "." , dot + 1);
         }
     }
     vector<string> restoreIpAddresses(string s) {
