@@ -6,7 +6,7 @@ public:
         reverse(s.begin() , s.end());
         return t==s;
     }
-    void util(string &s , int i , vector<string> temp){
+    void util(string &s , int i , vector<string> &temp){
         int n = s.size();
         if(i == n){
             ans.push_back(temp);
