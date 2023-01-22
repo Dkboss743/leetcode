@@ -10,7 +10,7 @@ public:
         }
         return true;
     }
-    void util(string &s , int i , vector<string> &temp){
+    void util(string &s , int i , vector<string> temp = {}){
         int n = s.size();
         if(i == n){
             ans.push_back(temp);
@@ -26,8 +26,8 @@ public:
         }
     }
     vector<vector<string>> partition(string s) {
-        vector<string> temp;
-        util(s , 0  , temp);
+       
+        util(s , 0);
         return ans;
     }
 };
