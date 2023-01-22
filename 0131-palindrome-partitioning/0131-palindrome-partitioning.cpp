@@ -2,9 +2,13 @@ class Solution {
 public:
     vector<vector<string>> ans;
     bool pal(string s){
-        string t = s;
-        reverse(s.begin() , s.end());
-        return t==s;
+         for(int i=0;i<s.size()/2;++i){
+            if(s[i]==s[s.size()-1-i]){
+                continue;
+            }
+            return false;
+        }
+        return true;
     }
     void util(string &s , int i , vector<string> &temp){
         int n = s.size();
