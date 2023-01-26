@@ -4,7 +4,7 @@ public:
         if(src == dst){
             return 0;
         }
-        if(k <= -1){
+        if(k <= 0){
             return INT_MAX;
         }
         if(dp[src][k]!= -1){
@@ -25,8 +25,8 @@ public:
         for(int i = 0 ; i<flights.size(); i++){
            gr[flights[i][0]].push_back({flights[i][1] , flights[i][2]});
         }
-        vector<vector<int>> dp(n+1, vector<int>(k+1 , -1));
-        int ans = dfs(gr ,src , dst , k, dp);
+        vector<vector<int>> dp(n+1, vector<int>(k+2 , -1));
+        int ans = dfs(gr ,src , dst , k+1, dp);
         return ans == INT_MAX ? -1 : ans;
         
     }
